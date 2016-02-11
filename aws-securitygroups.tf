@@ -33,7 +33,7 @@ resource "aws_security_group" "web" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    security_groups = ["${aws_security_group.ssh-bastion.id}"]
   }
 
   # HTTP access from the VPC
