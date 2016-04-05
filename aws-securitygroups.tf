@@ -1,7 +1,6 @@
 # A security group for the ELB so it is accessible via the web
 resource "aws_security_group" "elb" {
-  name        = "elb-sg"
-  description = "Used in the terraform"
+  name        = "notes-elb-${var.environment}"
   vpc_id      = "${aws_vpc.default.id}"
 
   # HTTP access from anywhere
@@ -24,11 +23,10 @@ resource "aws_security_group" "elb" {
 # Our default security group to access
 # the instances over SSH and HTTP
 resource "aws_security_group" "web" {
-  name        = "web-sg"
-  description = "Used in the terraform"
+  name        = "notes-web-${var.environment}"
   vpc_id      = "${aws_vpc.default.id}"
 
-  # SSH access from anywhere
+  # SSH access from SSH bastion host
   ingress {
     from_port   = 22
     to_port     = 22
@@ -54,7 +52,7 @@ resource "aws_security_group" "web" {
 }
 
 resource "aws_security_group" "ssh-bastion" {
-  name        = "ssh-bastion-sg"
+  name        = "notes-ssh-bastion-${var.environment}"
   vpc_id      = "${aws_vpc.default.id}"
 
   # SSH access from anywhere
