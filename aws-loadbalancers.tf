@@ -1,5 +1,5 @@
 resource "aws_elb" "web" {
-  name = "web-elb"
+  name = "notes-web-${var.environment}"
 
   subnets         = [
     "${aws_subnet.public-a.id}",
@@ -7,12 +7,16 @@ resource "aws_elb" "web" {
     "${aws_subnet.public-c.id}"
   ]
   security_groups = ["${aws_security_group.elb.id}"]
-  # instances       = ["${aws_instance.web.id}"]
 
   listener {
     instance_port     = 80
     instance_protocol = "http"
     lb_port           = 80
     lb_protocol       = "http"
+  }
+
+  tags {
+    Name = "notes-web-${var.environment}"
+    Environment = "${var.environment}"
   }
 }
