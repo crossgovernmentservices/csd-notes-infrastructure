@@ -46,3 +46,30 @@ variable "r53_notes_zone_id" {
   description = "DNS zone ID for 'notes' services"
 }
 
+variable "rds_allocated_storage" {
+  description = "Storage size (in GB)"
+  default = 10
+}
+
+variable "rds_instance_class" {
+  description = "RDS instance class (db.t1.micro etc.)"
+  default = "db.t1.micro"
+}
+
+variable "rds_username" {
+  description = "RDS username"
+}
+
+variable "rds_password" {
+  description = "RDS password"
+}
+
+variable "rds_storage_encrypted" {
+  description = "Encryption at rest? (requires >= db.m4.large instance)"
+  default = false
+}
+
+variable "rds_multi_az" {
+  description = "Create secondary AZ standby replica"
+  default = false
+}
