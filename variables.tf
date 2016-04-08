@@ -42,10 +42,6 @@ variable "domain_prefix" {
   default = "dev"
 }
 
-variable "r53_notes_zone_id" {
-  description = "DNS zone ID for 'notes' services"
-}
-
 variable "rds_allocated_storage" {
   description = "Storage size (in GB)"
   default = 10
