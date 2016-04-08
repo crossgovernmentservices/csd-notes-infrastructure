@@ -19,6 +19,7 @@ resource "aws_db_subnet_group" "main" {
 }
 
 resource "aws_db_instance" "main" {
+  identifier = "main-${var.environment}"
   allocated_storage    = "${var.rds_allocated_storage}"
   engine               = "postgres"
   engine_version       = "9.4.5"
