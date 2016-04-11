@@ -4,7 +4,7 @@
 
 case "$1" in
     apply) ACTION=apply ;;
-    destroy) ACTION=destroy ;;
+    destroy) ACTION="destroy -force" ;;
 esac
 
 # default env is 'dev'
