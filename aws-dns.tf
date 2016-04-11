@@ -1,6 +1,6 @@
 # Public A record
 resource "aws_route53_record" "public-a" {
-  zone_id = "${terraform_remote_state.shared.output.r53_notes_zone_id}"
+  zone_id = "${terraform_remote_state.csd.output.r53_notes_zone_id}"
   name = "${var.domain_prefix}"
   type = "A"
 

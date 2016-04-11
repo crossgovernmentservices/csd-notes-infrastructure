@@ -3,11 +3,11 @@
 #   public_key = "${file(var.public_key_path)}"
 # }
 
-resource "terraform_remote_state" "shared" {
+resource "terraform_remote_state" "csd" {
     backend = "s3"
     config {
-        bucket = "csd-notes-terraform"
-        key = "shared/terraform.tfstate"
+        bucket = "csd-terraform"
+        key = "terraform.tfstate"
         region = "eu-west-1"
     }
 }
