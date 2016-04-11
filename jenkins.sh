@@ -18,8 +18,8 @@ else
 fi
 
 cd csd-notes-config && blackbox_postdeploy
-DB_USER=$(grep DB_USERNAME ${ENV_FILE}.env | sed -E 's/(.*)=(.*)/\2/')
-DB_PASSWORD=$(grep DB_PASSWORD ${ENV_FILE}.env | sed -E 's/(.*)=(.*)/\2/')
+DB_USER=$(grep DB_USERNAME ${ENV_FILE} | sed -E 's/(.*)=(.*)/\2/')
+DB_PASSWORD=$(grep DB_PASSWORD ${ENV_FILE} | sed -E 's/(.*)=(.*)/\2/')
 
 cd ../csd-notes-infrastructure && blackbox_postdeploy
 
