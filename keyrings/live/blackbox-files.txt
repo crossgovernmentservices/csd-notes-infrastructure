@@ -1,2 +1,1 @@
-shared/terraform.tfvars
 terraform.tfvars
