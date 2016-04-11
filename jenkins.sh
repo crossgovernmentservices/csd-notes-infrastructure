@@ -7,11 +7,19 @@ case "$1" in
     destroy) ACTION=destroy ;;
 esac
 
+# default env is 'dev'
 ENV=${2:-dev}
 
+# use default.env file if named env file isn't present
+if [ ! -f envs/${ENV}.env ]; then
+    ENV_FILE=envs/${ENV}.env
+else
+    ENV_FILE=envs/default.env
+fi
+
 cd csd-notes-config && blackbox_postdeploy
-DB_USER=$(grep DB_USERNAME envs/${ENV}.env | sed -E 's/(.*)=(.*)/\2/')
-DB_PASSWORD=$(grep DB_PASSWORD envs/${ENV}.env | sed -E 's/(.*)=(.*)/\2/')
+DB_USER=$(grep DB_USERNAME ${ENV_FILE}.env | sed -E 's/(.*)=(.*)/\2/')
+DB_PASSWORD=$(grep DB_PASSWORD ${ENV_FILE}.env | sed -E 's/(.*)=(.*)/\2/')
 
 cd ../csd-notes-infrastructure && blackbox_postdeploy
 
