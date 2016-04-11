@@ -26,5 +26,7 @@ cd ../csd-notes-infrastructure && blackbox_postdeploy
 terraform remote config -backend=s3 -backend-config="bucket=csd-notes-terraform"\
   -backend-config="key=${ENV}.tfstate" -backend-config="region=eu-west-1"
 
+terraform remote pull
+
 terraform ${ACTION} -var "rds_username=${DB_USER}" -var "rds_password=${DB_PASSWORD}"\
   -var "environment=${ENV}" -var "domain_prefix=${ENV}"
