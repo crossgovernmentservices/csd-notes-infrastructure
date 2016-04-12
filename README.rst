@@ -100,8 +100,8 @@ The script assumes the following layout and is intended to be run from the ``csd
 
 Usage::
 
-  ./jenkins.sh apply $ENV
-  ./jenkins.sh destroy $ENV
+  csd-notes-infrastructure/jenkins.sh apply $ENV
+  csd-notes-infrastructure/jenkins.sh destroy $ENV
 
 Database user and password will be taken from a matching ``$ENV.env`` file if present, or ``default.env`` if not.
 
