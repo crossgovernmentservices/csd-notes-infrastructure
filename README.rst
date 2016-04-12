@@ -63,11 +63,12 @@ Configure remote storage::
       -backend-config="key=${ENV}.tfstate" -backend-config="region=eu-west-1"
 
 Sync local state with remote::
+
   $ terraform remote pull
 
 To see changes to be made (if any)::
 
-  $ terraform plan -var "rds_username=${DB_USER}"
+  $ terraform plan -var "rds_username=${DB_USER}" \
       -var "rds_password=${DB_PASSWORD}" \
       -var "environment=${ENV}" -var "domain_prefix=${ENV}"
 
@@ -79,7 +80,7 @@ To create or update an environment::
 
 To delete an environment::
 
-  $ terraform destroy -var "rds_username=${DB_USER}"
+  $ terraform destroy -var "rds_username=${DB_USER}" \
       -var "rds_password=${DB_PASSWORD}" \
       -var "environment=${ENV}" -var "domain_prefix=${ENV}"
 
