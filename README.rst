@@ -86,6 +86,24 @@ To delete an environment::
 
 Variables above are required, and will generally taken from the relevant ``.env`` file in the `CSD Notes Config`_ repo.
 
+Jenkins
+-------
+
+``jenkins.sh`` wraps the above ``terraform`` calls, and is used by the Jenkins CI
+server to automatically apply changes.
+
+The script assumes the following layout and is intended to be run from the ``csd-notes-infrastructure`` parent directory::
+
+  ./
+    ./csd-notes-infrastructure
+    ./csd-notes-config
+
+Usage::
+
+  ./jenkins.sh apply $ENV
+  ./jenkins.sh destroy $ENV
+
+Database user and password will be taken from a matching ``$ENV.env`` file if present, or ``default.env`` if not.
 
 .. _BlackBox: https://github.com/StackExchange/blackbox
 .. _CSD Notes Config: https://github.com/crossgovernmentservices/csd-notes-config
