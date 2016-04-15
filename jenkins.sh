@@ -30,3 +30,5 @@ terraform remote pull
 
 terraform ${ACTION} -var "rds_username=${DB_USER}" -var "rds_password=${DB_PASSWORD}"\
   -var "environment=${ENV}" -var "domain_prefix=${ENV}"
+
+terraform remote push
