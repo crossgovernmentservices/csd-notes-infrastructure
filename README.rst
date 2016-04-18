@@ -26,8 +26,28 @@ Requirements
      aws_access_key_id = ACCESS_KEY
      aws_secret_access_key = SECRET_KEY
 
-Usage
-=====
+Usage (scripted)
+================
+
+The ``infra.sh`` script will take care of the manual steps below.
+
+To create or update an environment::
+
+  $ ./infra.sh apply $ENV_NAME
+
+
+To delete an environment::
+
+  $ ./infra.sh destroy $ENV_NAME
+
+
+The above commands will use database username and password from a matching
+``envs/$ENV_NAME.env`` file in the `CSD Notes Config`_ repo, if present. If not
+present, `envs/default.env` will be used.
+
+
+Usage (manual)
+==============
 
 Variables
 ---------
