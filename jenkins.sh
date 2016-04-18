@@ -17,11 +17,16 @@ else
     ENV_FILE=envs/default.env
 fi
 
-cd csd-notes-config && blackbox_postdeploy
+cd ../csd-notes-config && blackbox_postdeploy
 DB_USER=$(grep DB_USERNAME ${ENV_FILE} | sed -E 's/(.*)=(.*)/\2/')
 DB_PASSWORD=$(grep DB_PASSWORD ${ENV_FILE} | sed -E 's/(.*)=(.*)/\2/')
 
 cd ../csd-notes-infrastructure && blackbox_postdeploy
+
+# always delete local tfstate files before doing anything else, because
+# terraform blindly pushes any local state to remote storage as a first step
+rm ./*.tfstate*
+rm ./.terraform/*.tfstate*
 
 terraform remote config -backend=s3 -backend-config="bucket=csd-notes-terraform"\
   -backend-config="key=${ENV}.tfstate" -backend-config="region=eu-west-1"
