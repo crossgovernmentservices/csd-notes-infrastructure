@@ -29,7 +29,14 @@ Requirements
 Usage (scripted)
 ================
 
-The ``infra.sh`` script will take care of the manual steps below.
+The ``infra.sh`` script will take care of the manual steps below. It assumes
+the following filesystem layout, where `CSD Notes Config`_ is checked out
+alongside this repo::
+
+  ./
+    ./csd-notes-infrastructure
+    ./csd-notes-config
+
 
 To create or update an environment::
 
