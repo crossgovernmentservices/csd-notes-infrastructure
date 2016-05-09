@@ -1,9 +1,12 @@
 #!/bin/bash
 
-: ${1?"Usage: $0 apply|destroy ENV"}
+: ${1?"Usage: $0 apply|destroy|plan|output|refresh ENV"}
 
 case "$1" in
     apply) ACTION=apply ;;
+    plan) ACTION=plan ;;
+    output) ACTION=output ;;
+    refresh) ACTION=refresh ;;
     destroy) ACTION="destroy -force" ;;
 esac
 
