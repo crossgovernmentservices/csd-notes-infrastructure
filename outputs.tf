@@ -30,3 +30,7 @@ output "environment" {
 output "rds_main_address" {
     value = "${aws_db_instance.main.address}"
 }
+
+output "credstash_key_arn" {
+    value = "${aws_dynamodb_table.credstash.arn}"
+}
