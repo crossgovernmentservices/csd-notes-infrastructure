@@ -47,3 +47,19 @@ resource "aws_db_instance" "main" {
     Environment = "${var.environment}"
   }
 }
+
+resource "aws_dynamodb_table" "credstash" {
+  name = "notes-${var.environment}-credentials"
+  read_capacity = 10
+  write_capacity = 10
+  hash_key = "name"
+  range_key = "version"
+  attribute {
+    name = "name"
+    type = "S"
+  }
+  attribute {
+    name = "version"
+    type = "S"
+  }
+}
