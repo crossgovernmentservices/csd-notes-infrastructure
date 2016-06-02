@@ -17,6 +17,10 @@ variable "aws_region" {
   default = "eu-west-1"
 }
 
+variable "aws_account_id" {
+  description = "AWS account ID"
+}
+
 # Ubuntu Precise 14.04 LTS (x64)
 variable "aws_web_amis" {
   default = {
